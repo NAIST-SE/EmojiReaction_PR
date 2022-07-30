@@ -7,6 +7,7 @@ Open source software development has become more social and collaborative, evide
 
 ## Seven Language Original Dataset
 * https://zenodo.org/record/6941932#.YuUM17lBybs
+<a href="https://doi.org/10.5281/zenodo.6941932"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6941932.svg" alt="DOI"></a>
 
 ## Contents
 * `Dataset` - a directory of the dataset that are used in RQ1-4
