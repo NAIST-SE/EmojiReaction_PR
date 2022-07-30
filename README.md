@@ -16,10 +16,10 @@ Open source software development has become more social and collaborative, evide
 
 		
 ## Authors
-- [Dong Wang](https://dong-w.github.io/) - Kyushu University
-- [Tao Xiao](https://tao-xiao.github.io/) - Nara Institute of Science and Technology
-- [Teyon Son](https://yebityon.hatenablog.com/) - Nara Institute of Science and Technology
-- [Raula Gaikovina Kula](https://raux.github.io/) - Nara Institute of Science and Technology
-- [Takashi Ishio](https://hideakihata.github.io/) - Nara Institute of Science and Technology
-- [Yasutaka Kamei](https://posl.ait.kyushu-u.ac.jp/~kamei/) - Kyushu University
-- [Kenichi Matsumoto](https://matsumotokenichi.github.io/) - Nara Institute of Science and Technology
+- :cn: [Dong Wang](https://dong-w.github.io/) - Kyushu University
+- :cn: [Tao Xiao](https://tao-xiao.github.io/) - Nara Institute of Science and Technology
+- :jp: [Teyon Son](https://yebityon.hatenablog.com/) - Nara Institute of Science and Technology
+- :papua_new_guinea: [Raula Gaikovina Kula](https://raux.github.io/) - Nara Institute of Science and Technology
+- :jp: [Takashi Ishio](https://hideakihata.github.io/) - Nara Institute of Science and Technology
+- :jp: [Yasutaka Kamei](https://posl.ait.kyushu-u.ac.jp/~kamei/) - Kyushu University
+- :jp: [Kenichi Matsumoto](https://matsumotokenichi.github.io/) - Nara Institute of Science and Technology
