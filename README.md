@@ -6,6 +6,7 @@ Open source software development has become more social and collaborative, evide
 * https://github.com/yebityon/PRReactionCollector
 
 ## Seven Language Original Dataset
+* https://zenodo.org/record/6941932#.YuUM17lBybs
 
 ## Contents
 * `Dataset` - a directory of the dataset that are used in RQ1-4
