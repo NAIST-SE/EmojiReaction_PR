@@ -14,9 +14,9 @@ Open source software development has become more social and collaborative, evide
 * http://sentistrength.wlv.ac.uk/ :gear:
 
 ## Contents
-* `RQ_Datasets` - contains the datasets that are used in each RQ, and the manual classification for RQ4 (inconsistency reasons)
+* `RQ_Datasets` - contains the datasets that are used in each RQ, and the manual classification for RQ4 (inconsistency reasons) :floppy_disk:
 
-* `Script` - contains the script to reproduce the non-linear regression model (RQ1)
+* `Script` - contains the script to reproduce the non-linear regression model (RQ1) :crystal_ball:
 
 		
 ## Authors
