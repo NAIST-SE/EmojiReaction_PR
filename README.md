@@ -9,6 +9,10 @@ Open source software development has become more social and collaborative, evide
 * https://zenodo.org/record/6941932#.YuUM17lBybs
 <a href="https://doi.org/10.5281/zenodo.6941932"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6941932.svg" alt="DOI"></a>
 
+## Automatic Intention Classifier/Sentiment Tool 
+* https://github.com/tkdsheep/Intention-Mining-TSE :gear:
+* http://sentistrength.wlv.ac.uk/ :gear:
+
 ## Contents
 * `RQ_Datasets` - contains the datasets that are used in each RQ, and the manual classification for RQ4 (inconsistency reasons)
 
