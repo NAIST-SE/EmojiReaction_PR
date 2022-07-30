@@ -1,0 +1,205 @@
+,Comment,intention_cat_name,
+19306,@jdlrobson good catch on the visual regression. Went ahead and changed the .less file to use the class and it works great now. Also addressed you other comments.,solution proposal,1
+15298,"Re upstreaming following the discussion at the dev meeting last week, the consensus is we would like to upstream to address the lack of flexibility that sunpy wants, but will likely merge this soon as we need a fix rather immediately. If/when an astropy release includes this fix, we can remove all custom deprecated logic.
+
+I certainly agree that even if this is upsteamed right now, you need to get this merged to cover the usage for the older astropy versions you still support.
+We have feature freeze for 4.1 next week, so it would be superb if you could upstream it by then to minimize the co-existing time. (Since this is a feature to utils and decorators, I can also backport it to 4.0.2)",aspect evaluation,1
+10762,"Summary:
+As our Flipper version is quite old, let's bump it to one of the latest stable: 0.125.0
+This required to update also the following:
+
+Flipper-Folly to 2.6.10 - This was needed as I aligned the versions to https://github.com/facebook/flipper/blob/v0.125.0/react-native/ReactNativeFlipperExample/ios/Podfile
+OpenSSL-Universal to 1.1.1100 - This was required with the pod update command
+
+I've picked 0.125.0 as 0.127.x and following are crashing on Android
+and will potentially require a bump of the NDK to r23:
+See: facebook/flipper#3245
+Changelog:
+[General] [Changed] - Bump Flipper to 0.125.0
+allow-large-files
+Reviewed By: mdvacca
+Differential Revision: D33583090",information giving,0
+49237,"Add default value in argument and option methods in Command class.
+// $myArg will be 'null'
+$myArg = $this->argument('foo');
+
+// $myArg will be 'a default value'
+$myArg = $this->argument('foo', 'a default value');          
+// $myOption will be 'null'
+$myOption = $this->option('foo');
+
+// $myOption will be 'a default value'
+$myOption = $this->option('foo', 'a default value');
+If there are any questions related to the changes, please let me know.",information seeking,1
+51290,Thanks for your Contribution! __,others,1
+5430,"fix(maven groupId): Updated the groupId to point to the correct location.
+Fix for #12755.",solution proposal,1
+28924,"OnLinkPrefixLength is supported from vista(_WIN32_WINNT==0x0600) and above.
+IP_ADAPTER_UNICAST_ADDRESS is IP_ADAPTER_UNICAST_ADDRESS_XP in Windows XP, but it does not have OnLinkPrefixLength.
+Microsoft also recommends checking NTDDI_VERSION >= NTDDI_VISTA, _WIN32_WINNT >= 0x0600, or WINVER >= 0x0600 when using IP_ADAPTER_UNICAST_ADDRESS.
+ref : https://docs.microsoft.com/en-us/windows/win32/api/iptypes/ns-iptypes-ip_adapter_unicast_address_lh",information giving,1
+72164,Fixes #2185,solution proposal,1
+36867,This PR was a test for one of our CI tests only.,information giving,1
+52023,"Q
+A
+
+
+
+
+Branch?
+2.6
+
+
+Tickets
+#4127 #3534
+
+
+License
+MIT
+
+
+
+The problem that filters attribute is not taken into account neither at the level of the OpenApiFactory, nor at the level of the different Filter extensions.
+This is due to the fact that we call the getCollectionOperationAttribute function regardless of the type of operation OperationType::SUBRESOURCE or OperationType::COLLECTION.
+This patch allows checking the type of operation and properly retrieve the attributes related to our operation in order to finally filter the collection returned from our subresource operation.
+How to reproduce:
+Imagine we have an Employee entity related via OneToMany to an EmployeeCompetence entity.
+resources:
+    App\Entity\Competence\EmployeeCompetence:
+        subresourceOperations:
+            api_employees_employee_competences_get_subresource:
+                method: 'GET'
+                filters: [ 'employee_competence.numeric_filter', 'employee_competence.order_filter', 'employee_competence.exists_filter' ]
+                normalization_context:
+                    groups: [ 'employee_competence:collection:get' ]
+
+Before the fix, filters will not be applied, and will not even be listed. After, filters will be resolved and listed on the openApi doc.
+Cheers!",problem discovery,1
+16681,"Summary
+A few months back, I submitted pull request #3184 to improve the performance of using connect when creating large workflows. Specifically, I had discovered that the use of the inputs or outputs properties of workflows can create a performance bottleneck if there are many child nodes or nested workflows.
+Recently, I noticed that the same bottleneck can cause a delay between calling workflow.run() and the start of the actual execution, meaning when nodes and interfaces start to run.
+Running cProfile suggests that the delay occurs in _create_flat_graph. Note that the profile does not include the full workflow execution, but was cancelled immediately when the first node started to run.
+
+As far as I can tell, before execution starts, nested workflows are merged into one overall workflow using _create_flat_graph. To resolve the final connections between nodes in this merged workflow, _create_flat_graph calls _get_parameter_node for each input from or output to a nested workflow, and then modifies the connection information accordingly.
+
+  
+    
+      nipype/nipype/pipeline/engine/workflows.py
+    
+    
+        Lines 975 to 979
+      in
+      e9217c2
+    
+  
+  
+    
+
+        
+          
+           for u, _, d in list(self._graph.in_edges(nbunch=node, data=True)): 
+        
+
+        
+          
+               logger.debug(""in: connections-> %s"", str(d[""connect""])) 
+        
+
+        
+          
+               for cd in deepcopy(d[""connect""]): 
+        
+
+        
+          
+                   logger.debug(""in: %s"", str(cd)) 
+        
+
+        
+          
+                   dstnode = node._get_parameter_node(cd[1], subtype=""in"") 
+        
+    
+  
+
+
+As a result, for each connection to/from a nested workflow, _get_parameter_node constructs the entire inputs or outputs data structure of the nested workflow, and then uses it to resolve the correct connection information. Just as for #3184, constructing this entire data structure over and over again for each connection can reduce performance.
+List of changes proposed in this PR (pull-request)
+
+Instead of generating the full inputs or outputs data structure, I propose that the _get_parameter_node function should traverse the individual workflow graphs until it finds the target node (or not).
+I have created a quick implementation that leads to a significant speedup. This implementation is a slightly modified copy of the code from #3184.
+
+I hope that this code will be useful for the nipype community.
+Acknowledgment
+
+ (Mandatory) I acknowledge that this contribution will be available under the Apache 2 license.",information giving,1
+47037,"I have tested this item _ successfully on 15cc391
+tested on safari on mac
+Before and after
+
+
+This comment was created with the J!Tracker Application at issues.joomla.org/tracker/joomla-cms/34213.",information giving,1
+52214,"I've done testing on WP.   All on master woith both WP 5.41 and WP 5.5.alpha
+I tested:
+
+Traditional Mailing
+Traditional mailing with Flexmailer
+Traditional Mailing with WP REST API
+Traditional mailing with Flexmailer and WP REST API
+Mosaico
+Mosaico with WP REST API
+
+All worked as expected.
+I did not test on Joomla.   But this does look ready to merge along with civicrm/civicrm-wordpress#192",information giving,1
+39368,Thanks !,others,1
+502,@chrisvest Thanks,others,1
+34907,The benchmark is running and integrated in the dashboard here: https://rootbnch-grafana-test.cern.ch/d/G2qrd2SWk/rdataframe?orgId=1,information giving,1
+31234,"The next formal release is being tracked in #3872 , you can subscribe to that for updates. We cannot give an exact date at this time, but you can see a list there of the work that still needs to be done.",solution proposal,0
+39012,"Subject
+
+Use constant for Request methods and Response http status codes
+
+I am targeting this branch, because these changes can also be applied before 3.x because the Request and Response are part of this project for a while
+
+Closes #5826",problem discovery,0
+9980,@simonmitchell sure thing! submitting a PR to my fork would be great! thanks,feature request,1
+35061,"This Pull request:
+Migration from RooAbsCollection and RooLinkedList legacy iterators to range-based loops
+Changes or fixes:
+PR includes migration of all the files from
+
+roofit/roofit
+roofit/roostats
+
+Checklist:
+
+ tested changes locally
+ updated the docs (if necessary)
+
+This PR fixes #8777",information giving,1
+75131,@explosion-bot please test_gpu,feature request,1
+38012,In totally fine with removing the no check macro. It was mostly just an idea,aspect evaluation,1
+43628,"Hi @mrtuvn,
+Can you provide a detailed explanation on how this issue can impact the customer? Please also add some steps to reproduce, the ones from the issue itself aren't very clear.
+Thanks.",information seeking,1
+61337,"Made some minor changes. Other than that it looks good!
+Two questions: first, what is the reason that the COP for cooling is fixed, while it isn't for heating? I would expect the COP for cooling to also be dependent on the outside temperature (though I am not that knowledgeable about heat pumps). Second, does the mean that the information that was included in the slider text before (about the percentage of households that can be fitted with a heat pump) is no longer relevant?",aspect evaluation,0
+69683,"CLA received - thank you! My approval stands.
+Needs a second review.",others,0
+13304,"Thanks a lot! This is a good start to a handy utility, and I look forward to seeing it grow.",others,1
+9877,"In case, please use the updated Jira ticket title
+
+I think PR author and contributor is in a much better position to update PR/JIRA titles than the reviewer/committer.
+All in all, I would like for the contributors to update the PR/JIRA/whatever title so it reflects the actual intention rather than ""the first idea which might even be abandoned long ago"".",aspect evaluation,1
+13315,Fixes: #1151,solution proposal,1
+76479,"The ""wchar"" encoding isn't really an encoding -- it's what we
+internally use as the representation of decoded characters.
+In practice, it tends to behave a lot like the 8bit encoding when
+used from userland, because input code units end up being treated
+as code points.
+This patch removes the wchar encoding from the public encoding
+list and reserves it for internal use only.",information giving,1
+42664,"Hi @Neos2007
+Thank you for your contribution, we found this PR very helpful and we are going to proceed with it by our internal team.
+Once we merge it, status of this will be changed to merged.
+Thanks.",others,0
