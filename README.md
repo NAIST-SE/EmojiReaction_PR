@@ -10,9 +10,9 @@ Open source software development has become more social and collaborative, evide
 <a href="https://doi.org/10.5281/zenodo.6941932"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6941932.svg" alt="DOI"></a>
 
 ## Contents
-* `Dataset` - a directory of the dataset that are used in RQ1-4
+* `RQ_Datasets` - contains the datasets that are used in each RQ, and the manual classification for RQ4 (inconsistency reasons)
 
-* `Script` - a directory of the scripts that are used in RQ1-4
+* `Script` - contains the script to reproduce the non-linear regression model (RQ1)
 
 		
 ## Authors
